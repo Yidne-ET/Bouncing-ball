@@ -1,0 +1,193 @@
+
+;thsi is assambely code for ball bouncing animation
+
+org 100h
+mov ax, 3
+int 10h
+mov al , 'O'
+mov ah, 0eh
+int 10h
+mov ah, 0
+int 16h
+mov bl , 0
+mov cl , 0
+;;;;;;;;;;;;;;;;;;;;;the first bounce
+bounce1:
+mov dl , cl
+mov dh, bl
+mov ah, 2
+int 10h
+mov al , 0
+mov ah, 0eh
+int 10h
+jmp increase1
+c1:
+cmp bl , 23
+je decrease1
+jb bounce1
+increase1:
+inc cl
+inc bl
+mov dl , cl
+mov dh, bl
+mov ah, 2
+int 10h
+mov al , 'O'
+mov ah, 0eh
+int 10h
+jmp c1
+decrease1:
+mov dl , cl
+mov dh, bl
+mov ah, 2
+int 10h
+mov al , 0
+mov ah, 0eh
+int 10h
+cmp bl , 9
+ja null_1
+je bounce2
+
+null_1:
+inc cl
+dec bl
+mov dl , cl
+mov dh, bl
+mov ah, 2
+int 10h
+mov al , 'O'
+mov ah, 0eh
+int 10h
+jmp decrease1
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;second bounce
+bounce2:
+mov dl , cl
+mov dh, bl
+mov ah, 2
+int 10h
+mov al , 0
+mov ah, 0eh
+int 10h
+jmp increase2
+c2:
+cmp bl , 23
+je decrease2
+jb bounce2
+increase2:
+inc cl
+inc bl
+mov dl , cl
+mov dh, bl
+mov ah, 2
+int 10h
+mov al , 'O'
+mov ah, 0eh
+int 10h
+jmp c2
+decrease2:
+mov dl , cl
+mov dh, bl
+mov ah, 2
+int 10h
+mov al , 0
+mov ah, 0eh
+int 10h
+cmp bl , 15
+ja null_2
+je bounce3
+null_2:
+
+inc cl
+
+dec bl
+mov dl , cl
+mov dh, bl
+mov ah, 2
+int 10h
+mov al , 'O'
+mov ah, 0eh
+int 10h
+jmp decrease2
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;3rd bounce
+bounce3:
+mov dl , cl
+mov dh, bl
+mov ah, 2
+int 10h
+mov al , 0
+mov ah, 0eh
+int 10h
+jmp increase3
+c3:
+cmp bl , 23
+je decrease3
+jb bounce3
+increase3:
+inc cl
+inc bl
+mov dl , cl
+mov dh, bl
+mov ah, 2
+int 10h
+mov al , 'O'
+mov ah, 0eh
+int 10h
+jmp c3
+decrease3:
+mov dl , cl
+mov dh, bl
+mov ah, 2
+int 10h
+mov al , 0
+mov ah, 0eh
+int 10h
+cmp bl , 18
+ja null_3
+je bounce4
+null_3:
+inc cl
+dec bl
+mov dl , cl
+mov dh, bl
+mov ah, 2
+int 10h
+mov al , 'O'
+mov ah, 0eh
+int 10h
+jmp decrease3
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;4rd bounce
+bounce4:
+mov dl , cl
+mov dh, bl
+mov ah, 2
+int 10h
+mov al , 0
+mov ah, 0eh
+int 10h
+jmp increase4
+c4:
+cmp bl , 24
+je decrease4
+jb bounce4
+increase4:
+inc cl
+inc bl
+mov dl , cl
+mov dh, bl
+mov ah, 2
+int 10h
+mov al , 'O'
+mov ah, 0eh
+int 10h
+jmp c4
+decrease4:
+mov dl , cl
+mov dh, bl
+mov ah, 2
+int 10h
+mov al , 'O'
+mov ah, 0eh
+int 10h
+jmp finish
+finish:
+ret
