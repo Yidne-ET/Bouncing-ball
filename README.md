@@ -1,0 +1,1 @@
+This project features a bouncing ball animation developed using Assembly language for the 8086 microprocessor. It serves as a mini-project showcasing the fundamentals of low-level programming and animation techniques.
